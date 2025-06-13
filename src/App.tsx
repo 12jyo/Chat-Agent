@@ -308,20 +308,16 @@ const App: React.FC = () => {
   }, [currentChatId]);
 
   const callClaudeAPI = useCallback(async (currentMessages: Message[]): Promise<string> => {
-    const payload = {
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 4000,
-      messages: currentMessages.map(m => ({ role: m.role, content: m.content })),
-      system: 'You are Claude, a helpful AI assistant created by Anthropic.'
-    };
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://qvpvs1nohh.execute-api.ap-south-1.amazonaws.com/claude-seq', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        messages: currentMessages.map(m => ({ role: m.role, content: m.content })),
+        apiKey: apiKey,
+        model: 'claude-3-5-sonnet-20241022'
+      })
     });
     if (!response.ok) {
       const err = await response.json();
