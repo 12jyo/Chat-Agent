@@ -1,54 +1,94 @@
-# React + TypeScript + Vite
+# 💬 Claude Chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based chatbot interface powered by Anthropic's Claude API. It features persistent chat history, API key management, and a modern responsive UI. Built using Vite, Tailwind CSS, and TypeScript.
 
-Currently, two official plugins are available:
+🌐 **Live Demo**  
+👉 https://conversational-interface.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔐 API Key Authentication
+- Simple interface for saving and managing your Claude API key.
+- Key stored securely in localStorage (client-side only).
+- Reset/delete key at any time.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 💬 Persistent Chat History
+- Create multiple chats, auto-titled from the first message.
+- Chats are saved across sessions using localStorage.
+- Clear or delete chats individually or in bulk.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### ⚡ Real-time Messaging
+- Auto-scrolls as new messages appear.
+- Message input expands automatically with content.
+- Displays loading state when Claude is generating a response.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🖼️ Responsive UI
+- ChatGPT-style layout with two-panel design.
+- Built with Tailwind CSS for responsive styling.
+- Clean, minimal, and fast.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 🧰 Tech Stack
+
+- **React + TypeScript**
+- **Vite** (Build tool)
+- **Tailwind CSS**
+- **LocalStorage** (for persistence)
+- **Claude API** (via AWS Lambda endpoint)
+
+---
+
+## 📁 Folder Structure
+claude-chat/
+├── netlify/functions/ # Serverless Claude API handler (index.mjs)
+├── node_modules/
+├── public/ 
+├── src/ 
+│ ├── App.tsx 
+│ ├── main.tsx 
+│ ├── index.css 
+│ ├── App.css 
+│ └── vite-env.d.ts 
+├── .gitignore
+├── index.html 
+├── eslint.config.js
+├── vite.config.ts
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── package.json
+├── package-lock.json
+└── README.md
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have **Node.js** and **npm** installed.
+
+#### Installation
+
+1. Clone the repo:
+   git clone https://github.com/12jyo/spacex-mission-tracker.git
+   cd spacex-mission-tracker
+
+2. Install dependencies:
+   npm install
+
+3. Start the development server:
+   npm run dev
+   
+
+## 🔑 Claude API Setup
+This project requires an API key to call Claude:
+
+Visit your Claude API provider and generate an API key (e.g., from a secured endpoint using AWS Lambda or reverse proxy).
+
+On first load of the app, enter your API key.
+
+The key is stored in localStorage and used on subsequent requests.
+
+To reset it, use the Delete API Key button in the sidebar.
