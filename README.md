@@ -43,7 +43,6 @@ A React-based chatbot interface powered by Anthropic's Claude API. It features p
 
 ## 📁 Folder Structure
 claude-chat/
-├── netlify/functions/ # Serverless Claude API handler (index.mjs)
 ├── node_modules/
 ├── public/ 
 ├── src/ 
@@ -72,8 +71,8 @@ Make sure you have **Node.js** and **npm** installed.
 #### Installation
 
 1. Clone the repo:
-   git clone https://github.com/12jyo/spacex-mission-tracker.git
-   cd spacex-mission-tracker
+   git clone https://github.com/12jyo/Chat-Agent.git
+   cd Chat-Agent
 
 2. Install dependencies:
    npm install
